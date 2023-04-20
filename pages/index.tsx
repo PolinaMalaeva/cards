@@ -59,8 +59,7 @@ export default function Home() {
       <div className={'flex flex-wrap justify-center gap-4 mx-auto max-w-6xl py-20 px-4'}>
         {services.map((item, index) =>
           <Service key={`service` + index}
-                   service={item}
-                   index={index} />
+                   service={item} />
         )}
       </div>
     </>

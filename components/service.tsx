@@ -1,11 +1,11 @@
 import Sticker from "./sticker";
 import {ServiceType} from "@/pages";
-import {useRef} from "react";
+import React, {useRef} from "react";
 
 const Service = ({service}: { service: ServiceType }) => {
   const cardRef = useRef<HTMLDivElement | null>(null)
 
-  const hoverCard = (e) => {
+  const hoverCard = (e: React.MouseEvent<HTMLDivElement>) => {
     if (cardRef.current instanceof HTMLDivElement) {
       const rect = cardRef.current.getBoundingClientRect()
       const x = e.clientX - rect.left
