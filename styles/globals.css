@@ -2,26 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: 'Neue Machina';
+  src: url('../public/fonts/NeueMachina-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@font-face {
+  font-family: 'Neue Machina';
+  src: url('../public/fonts/NeueMachina-Ultrabold.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../public/fonts/Inter-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: 'Inter', serif;
+  background: black;
+}
+
+.card {
+  position: relative;
+  --y: calc((var(--cursor-y) * 1px));
+  --x: calc((var(--cursor-x) * 1px));
+  transition: all .5s ease;
+  will-change: background;
+}
+
+.card::before {
+  content: "";
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transition: opacity .5s ease;
+  will-change: background, opacity;
+  background: radial-gradient(700px circle at var(--x) var(--y), #4C1D95, transparent 40%);
+  opacity: 0;
+}
+
+.card:hover::before {
+  opacity: 1;
 }
